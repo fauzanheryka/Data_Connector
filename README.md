@@ -27,7 +27,8 @@ Memprediksi apakah pelanggan akan tertarik untuk membeli Asuransi Kendaraan sehi
   * [Data Description](#data-description)
   * [Project Outline](#project-outline)
     - 1 [EDA](#eda)
-    - 2 [Business Insight](#normalization)
+    - 2 [Business Insight](#business-insight)
+  * [Reference](#reference)
     
 
 # Abstract
@@ -75,7 +76,7 @@ Kami memiliki 381109  baris data.
 # Project Outline
 
 ## EDA
-Dalam melakukan Exploratory Data Analysis pertama kita mencoba untuk melakukan analisis **univariate** pada kolom numeriik dan kategorik. kita berhasil menemukan beberapa fakta menarik : 
+pada dataset ini memiliki Dalam melakukan Exploratory Data Analysis  pertama kita mencoba me untuk melakukan analisis **univariate** pada kolom numeriik dan kategorik. kita berhasil menemukan beberapa fakta menarik : 
 - persebaran Umur Customer
 ![histogram age](https://github.com/fauzanheryka/Data_Connector/assets/141212116/d6822f71-593e-4670-b8ea-a172800ab012)
 grafik diatas menunjukkan bahwa orang-orang yang berusia 25-52 tahun lebih mungkin membeli asuransi kesehatan daripada orang-orang yang lebih muda atau lebih tua. Ini mungkin karena orang-orang dalam kelompok usia ini lebih mungkin memiliki tanggungan, seperti anak-anak atau orang tua yang sakit. Mereka juga lebih mungkin memiliki pekerjaan yang memberi mereka akses ke asuransi kesehatan, tetapi mereka mungkin tidak dapat membeli asuransi kesehatan yang mereka inginkan atau butuhkan.
@@ -98,9 +99,25 @@ setelah kita melakukan analisis univariate kita lanjut ke tahap ke berikutnya ya
 - Dari pair plot disamping sekilas dataset ini memiliki kemungkinan imbalance karena hanya condong di “response = 0”
 
 
-**Berikut adalah sekilas beberapa grafik yang menarik, masih banyak lagi di notebook silahkan dilihat :)**
-
 ## Business Insight
 dalam EDA kita hanya berfokus untuk mengenali data, persebaran data dan menemukan outlier serta mencari insight, setelah kita melakukan EDA kita akan melakukan rekomendasi bisnis untuk perusahaan agar bisa mencapai bisnis metrics yang sudah ditetapkan. 
 Berikut beberapa rekomendasi bisnis yang sudah ditemukan : 
+- Age grup
+![age grup](https://github.com/fauzanheryka/Data_Connector/assets/141212116/fb511bc5-52f5-46b9-818a-2a620a8267fd)
+distribusi kelompok umur muda lebih banyak membeli asuransi kesehatan atau kendaraan, dikarenakan pada umur yang lebih muda kemungkinan besar mereka cenderung lebih sadar akan pentingnya perlindungan finansial melalui asuransi. Hal ini juga didukung oleh protective.com dalam artikelnya yang berjudul “why you should buy life insurance when you are young” yang mengatakan bahwa kelompok umur muda lebih banyak membeli asuransi karena dua faktor sebagai berikut:
+    * Cheaper & Healthier
+    Secara umum, semakin muda umur kita maka akan semakin sedikit kita akan membayar premi, karena kelompok umur muda memiliki risiko yang lebih kecil daripada seseorang yang jauh lebih tua secara kondisi kesehatan
+- Vehicle age 
+![vehicle age grup](https://github.com/fauzanheryka/Data_Connector/assets/141212116/068c75d8-3ba6-4f00-9344-a842aa5d6c85)
+Dapat dilihat dari grafik bahwa customer yang memiliki atau tertarik dengan asuransi merupakan customer yang mempunyai usia kendaraan yang kurang dari 2 tahun (1-2 Year dan < 1 Year), karena mereka akan cenderung lebih merawat kendaraan baru yang dimiliki. Hal ini juga didukung oleh forbes.com dalam artikelnya yang berjudul “advisor/car-insurance/new-car-replacement” yang menyatakan bahwa kendaraan baru lebih banyak memiliki asuransi, karena hal sebagai berikut:
+    * Penurunan nilai/Depresiasi nilai kendaraan dapat merugikan customer disaat customer mengalami kecelakaan tak lama setelah customer membeli mobil baru. Perusahaan asuransi kemungkinan besar akan mengganti nilai kendaraan dibawah harga beli karena karena depresiasi dan kecelakaan tersebut, sehingga klaim yang dibayarkan tidak cukup untuk mengcover nilai kendaraan customer, sehingga disarankan untuk mempunyai asuransi kendaraan, seperti contoh nya adalah “asuransi penggantian mobil baru”.
 
+
+**Berikut adalah sekilas beberapa grafik yang menarik, masih banyak lagi di notebook silahkan dilihat :)**
+
+---
+
+# Reference
+1. Kaiser Family Foundation - https://www.kff.org/
+2. Pew Research Center - https://www.pewresearch.org/
+3. U.S. Census Bureau - https://www.census.gov/
