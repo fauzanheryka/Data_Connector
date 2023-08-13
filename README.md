@@ -103,7 +103,7 @@ setelah kita melakukan analisis univariate kita lanjut ke tahap ke berikutnya ya
 
 ## Business Insight
 dalam EDA kita hanya berfokus untuk mengenali data, persebaran data dan menemukan outlier serta mencari insight, setelah kita melakukan EDA kita akan melakukan bisnis insight untuk perusahaan agar bisa mencapai bisnis metrics yang sudah ditetapkan. 
-Berikut beberapa rekomendasi bisnis yang sudah ditemukan : 
+Berikut beberapa bisnis insight yang sudah ditemukan : 
 - Age grup
 ![age grup](https://github.com/fauzanheryka/Data_Connector/assets/141212116/fb511bc5-52f5-46b9-818a-2a620a8267fd)
 distribusi kelompok umur muda lebih banyak membeli asuransi kesehatan atau kendaraan, dikarenakan pada umur yang lebih muda kemungkinan besar mereka cenderung lebih sadar akan pentingnya perlindungan finansial melalui asuransi. Hal ini juga didukung oleh protective.com dalam artikelnya yang berjudul “why you should buy life insurance when you are young” yang mengatakan bahwa kelompok umur muda lebih banyak membeli asuransi karena dua faktor sebagai berikut:
