@@ -79,11 +79,13 @@ Kami memiliki 381109  baris data.
 pada dataset ini memiliki Dalam melakukan Exploratory Data Analysis  pertama kita mencoba me untuk melakukan analisis **univariate** pada kolom numeriik dan kategorik. kita berhasil menemukan beberapa fakta menarik : 
 - persebaran Umur Customer
 ![histogram age](https://github.com/fauzanheryka/Data_Connector/assets/141212116/d6822f71-593e-4670-b8ea-a172800ab012)
+
 grafik diatas menunjukkan bahwa orang-orang yang berusia 25-52 tahun lebih mungkin membeli asuransi kesehatan daripada orang-orang yang lebih muda atau lebih tua. Ini mungkin karena orang-orang dalam kelompok usia ini lebih mungkin memiliki tanggungan, seperti anak-anak atau orang tua yang sakit. Mereka juga lebih mungkin memiliki pekerjaan yang memberi mereka akses ke asuransi kesehatan, tetapi mereka mungkin tidak dapat membeli asuransi kesehatan yang mereka inginkan atau butuhkan.
 Referensi yang mendukung data ini salah satunya :
     * Studi oleh Pew Research Center menemukan bahwa 83% orang berusia 18-29 tahun memiliki asuransi kesehatan, dibandingkan dengan 90% orang berusia 30-49 tahun dan 94% orang berusia 50-64 tahun.
 - Pie chart previously customer  
 ![pie chart Previously](https://github.com/fauzanheryka/Data_Connector/assets/141212116/12905489-2115-4022-88ea-8a6d899844ee)
+
 Variabel Previously_Insured menunjukkan bahwa 45,82% orang dalam data pernah memiliki asuransi. Ada beberapa alasan mengapa orang yang pernah memiliki asuransi kesehatan sebelumnya lebih mungkin membeli asuransi kesehatan. orang yang pernah memiliki asuransi kesehatan sebelumnya lebih mungkin memahami manfaat asuransi kesehatan.
 Referensi yang mendukung data ini termasuk:
     - Studi oleh Pew Research Center menemukan bahwa 78% orang yang pernah memiliki asuransi kesehatan sebelumnya mengatakan mereka lebih mungkin membeli asuransi kesehatan lagi di masa depan.
