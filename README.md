@@ -219,6 +219,15 @@ Dapat dilihat dari grafik bahwa customer yang memiliki atau tertarik dengan asur
 
 Dari modeling diatas kita bisa mengetahui bahwa model Logistic Regression dan naive bayes memiliki score recall yang baguss sesuai dengan tujuan bisnis yang sudah ditentukan yaitu mencari true positive sebanyak - banyaknya. maka pilihan model logistic regression dan naive bayes adalah opsi terbaik dengan score yang hampir mirip yaitu 97% dengan score auc roc yang stabil juga, sehingga memiliki kecenderungan overfit/underfit yang sangat kecil sekali. meskipun begitu kita akan mencoba mengoptimasi kedua model tersebut menggunakan hyperparameter tuning.
 
+- ##  Hyperparameter Logistic Regression
+
+![Hyperparam Logistic Regression](https://github.com/fauzanheryka/Data_Connector/assets/141822563/5fe73b12-5f15-4926-934a-bb9ea47ede02)
+![Logistic Regression ROC Curve](https://github.com/fauzanheryka/Data_Connector/assets/141822563/e3ca1264-83ae-4c10-b05f-2995c366ae82)
+
+     - Setelah melakukan tuning kita berhasil menaikan recall score dari 97% meskipun tidak terlalu signifikan menggunakan randomized search karena pada saat menggunakan metode tersebut memiliki compute time yang relatif cepat
+     -Setelah melakukan tuning kita berhasil mengurangi false negative yang lumayan, sehingga hal ini bisa membuat model untuk memprediksi customer yang memang benar - benar tidak berminat untuk membeli asuransi lebih akurat dan dapat mencegah cost loss perusahaan.
+     - Dan setelah tuning pada data test memiliki kenaikan true postive yang bisa menjadi peningkatan conversion rate sesuai dengan tujuan bisnis
+
 ---
 
 # Reference
