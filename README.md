@@ -10,7 +10,6 @@ Anggota Kelompok:
 5. Lulu Munira Hanifah
 6. Aulia Kindy
 7. Rojiat Liqoarobby
-8. Qarry Atul Chairunissa
 
 # Health Insurance Cross Sell Prediction
 Memprediksi apakah pelanggan akan tertarik untuk membeli Asuransi Kendaraan sehingga perusahaan dapat merencanakan strategi komunikasinya untuk menjangkau pelanggan tersebut dan mengoptimalkan **Business model** dan **Revenue**.
@@ -30,9 +29,12 @@ Memprediksi apakah pelanggan akan tertarik untuk membeli Asuransi Kendaraan sehi
     - 2 [Business Insight](#business-insight)
     - 3 [Data Pre-Processing](#data-pre-processing)
     - 4 [Feature Engineering](#feature-engineering)
-    - 5 [Feature selection](#feature-selection)
-  * [Reference](#reference)
+    - 5 [Feature Selection](#feature-selection)
+    - 6 [Machine Learning Evaluation & Supervised Learning](#machine-learning-evaluation--supervised-learning)
+    - 7 [Business Recommendation](#business-recommendation)
     
+  * [Conclusion](#conclusion)
+  * [Reference](#reference)
 
 # Abstract
 Polis asuransi adalah surat perjanjian atau kontrak sebagai bukti pengalihan risiko dari tertanggung (peserta) kepada penanggung (pihak penyedia layanan asuransi). Perusahaan menyanggupi untuk memberikan jaminan kompensasi atas kerugian, kerusakan, penyakit, atau kematian tertentu sebagai imbalan atas pembayaran premi tertentu. Ada beberapa faktor yang memainkan peran utama dalam menjaring pelanggan untuk setiap polis asuransi. Di sini kami memiliki data tentang demografi seperti usia, jenis kelamin, kode wilayah, dan kerusakan kendaraan, usia kendaraan, premi tahunan, saluran sumber polis.
@@ -192,9 +194,104 @@ Dapat dilihat dari grafik bahwa customer yang memiliki atau tertarik dengan asur
     8. Feature "Payment_Method"
         Feature "Payment_Method" atau Metode Pembayaran saat customer membeli kendaraan dapat dijadikan feature tambahan karena feature ini akan berguna untuk melihat seberapa besar pengaruh cara bayar customer saat membeli kendaraan terhadap keputusan customer apakah akan menggunakan Asuransi Kendaraan atau tidak. Hal ini disebabkan ketika customer memiliki kendaraan yang belum lunas pembayarannya, mereka cenderung untuk menjaga kendaraan nya agar tidak mengalami kerusakan, yang disebabkan karena ketika kendaraan rusak, maka akan ada biaya tambahan lagi yang dikeluarkan. Akan menjadi lebih menarik lagi jika kita dapat melihat bagaimana kecenderungan customer yang masih memiliki cicilan kendaraan terhadap ketertarikan mereka untuk membayar asuransi kendaraan tiap bulan.
 
+## Machine Learning Evaluation & Supervised Learning
+
+- ## Referensi Modeling Machine Learning dan Hyperparameter Tuning
+  Untuk mempermudah pemilihan model machine learning dan hyperparameter tuning yang akan digunakan pada project ini, kami melakukan riset dan pada akhir nya mengacu pada dua penelitian sebagai berikut untuk penentuan model dan hyperparameter tuning yang akan dilakukan:
+     - Paper "A Classification Problem: Health Insurance Cross Sell Prediction" - University of San Diego
+     - Journal "Comparative Analysis of Building Insurance Prediction Using Some Machine Learning Algorithms" - University of Electronic Science and Technology of China
+
+- ##  Modeling Machine Learning
+  Berdasarkan referensi diatas dan pembelajaran yang telah kami lakukan pada bootcamp, kami akan mencoba berbagai model pembelajaran ML pada kumpulan data untuk melihat kinerja masing-masing model:
+     - Logistic Regression
+     - XGBoost
+     - Decision Tree
+     - Random Forest
+     - Naive Bayes
+     - KNN
+     - Precision : Precision adalah rasio prediksi True Positive terhadap jumlah total prediksi Positive.
+     - Recall : Recall adalah rasio prediksi True positif terhadap jumlah total kasus positif sebenarnya
+     - F1-Score : menghitung keseimbangan mean dari precision dan recall
+     - Confusion Matrix : Matriks konfusi menunjukkan jumlah prediksi True Positive, False positive, True Negative, dan False Negative yang dibuat oleh model.
+     - ROC Curve: Kurva karakteristik pengoperasian penerima, atau kurva ROC, adalah plot grafis yang menggambarkan kemampuan diagnostik sistem pengklasifikasi binary karena ambang diskriminasinya bervariasi. Kurva ROC dibuat dengan memplot True Positive Rate (TPR) terhadap False Positive Rate (FPR) pada berbagai pengaturan threshold. true positive Rate (TPR) juga dikenal sebagai sensitivitas, perolehan, atau probabilitas deteksi dalam pembelajaran mesin. False positive Rate juga dikenal sebagai probabilitas alarm palsu dan dapat dihitung sebagai (1 − spesifisitas).
+     - Classification report : Visualisasi laporan klasifikasi menampilkan score precision, recall, F1, dan dukungan untuk model. Untuk mendukung interpretasi dan deteksi masalah yang lebih mudah, laporan ini mengintegrasikan skor numerik dengan heatmap.
+     - Untuk dataset ini kita memfokuskan metric evaluasi recall score, karena ingin meningkatkan conversion rate sebanyak mungkin untuk mendapatkan potensial user
+
+![Eval Classification Models](https://github.com/fauzanheryka/Data_Connector/assets/141822563/cbcc0200-e6dc-4c51-8c2f-c8c396fc43eb)
+
+Dari modeling diatas kita bisa mengetahui bahwa model Logistic Regression dan naive bayes memiliki score recall yang baguss sesuai dengan tujuan bisnis yang sudah ditentukan yaitu mencari true positive sebanyak - banyaknya. maka pilihan model logistic regression dan naive bayes adalah opsi terbaik dengan score yang hampir mirip yaitu 97% dengan score auc roc yang stabil juga, sehingga memiliki kecenderungan overfit/underfit yang sangat kecil sekali. meskipun begitu kita akan mencoba mengoptimasi kedua model tersebut menggunakan hyperparameter tuning.
+
+- ##  Hyperparameter Logistic Regression
+
+![Hyperparam Logistic Regression](https://github.com/fauzanheryka/Data_Connector/assets/141822563/5fe73b12-5f15-4926-934a-bb9ea47ede02)
+![Logistic Regression ROC Curve](https://github.com/fauzanheryka/Data_Connector/assets/141822563/e3ca1264-83ae-4c10-b05f-2995c366ae82)
+
+     - Setelah melakukan tuning kita berhasil menaikan recall score dari 97% meskipun tidak terlalu signifikan menggunakan randomized search karena pada saat menggunakan metode tersebut memiliki compute time yang relatif cepat
+     -Setelah melakukan tuning kita berhasil mengurangi false negative yang lumayan, sehingga hal ini bisa membuat model untuk memprediksi customer yang memang benar - benar tidak berminat untuk membeli asuransi lebih akurat dan dapat mencegah cost loss perusahaan.
+     - Dan setelah tuning pada data test memiliki kenaikan true postive yang bisa menjadi peningkatan conversion rate sesuai dengan tujuan bisnis
+
+- ##  Hyperparameter Tuning GNB
+
+![Hyperparam GNB](https://github.com/fauzanheryka/Data_Connector/assets/141822563/f4a6c56c-d9d6-4d4d-85f0-a63aaea1d3bd)
+![GNB ROC Curve](https://github.com/fauzanheryka/Data_Connector/assets/141822563/ebd201dc-15ca-4ee3-8729-c1dc92664f37)
+
+     - Dari hasil hyper parameter diatas sepertinya naive bayes sudah berada di batas max dan sudah tidak memiliki kenaikan yang signifikan pada saat dilakukan hyperparameter tuning maka dari itu bisa disimpulkan bahwa logistic regresion adalah best model untuk dataset ini
+
+- ## Feature Importance
+![Feature Importance](https://github.com/fauzanheryka/Data_Connector/assets/141822563/10adbb3b-f52d-46b1-b968-3dda42eea1e2)
+
+  Pada dataset ini memiliki beberapa fitur yang penting, sesuai dari grafik diatas ada 2 fitur yang dominan yaitu vehicle damage dan vehicle age.Fitur vehicle damage memiliki importance score yang tinggi, maka fitur tersebut memiliki hubungan yang kuat pada conversion rate hal ini didukung dengan artikel dari analyticsvidhya.com dalam artikelnya yang berjudul “Cross-Sell Prediction Using Machine Learning in Python” yang menyatakan bahwa:
+- Customer yang kendaraan nya pernah rusak cenderung lebih memiliki pengalaman dan pengetahuan dari segi cost yang harus dikeluarkan untuk memperbaiki kendaraan nya. Dari segi pengalaman customer, apabila menggunakan asuransi, cost yang dikeluarkan jauh lebih murah daripada saat tidak menggunakan asuransi, karena saat menggunakan asuransi kendaraan, customer dapat mendapatkan klaim dari asuransi disaat kendaraan mereka rusak, sedangkan apabila tidak menggunakan asuransi, customer akan menanggung biaya perbaikan nya sendiri (yang jauh lebih mahal).
+ 
+Untuk vehicle age juga memiliki score tertinggi kedua yang bearti usia kendaraan juga memiliki kemungkinan tinggi untuk customer membeli asuransi kendaraan.Dari EDA yang sudah ditampilkan usia kendaraan kurang dari 2 tahun akan membeli asuransi kendaraan, karena untuk beberapa customer dengan memiliki mobil baru mereka akan merawat kendaraan yang baru dimiliki. Hal ini juga didukung oleh forbes.com dalam artikelnya yang berjudul “advisor/car-insurance/new-car-replacement” yang menyatakan bahwa kendaraan baru lebih banyak memiliki asuransi, karena hal sebagai berikut:
+- Penurunan nilai/Depresiasi nilai kendaraan dapat merugikan customer disaat customer mengalami kecelakaan tak lama setelah customer membeli mobil baru. Perusahaan asuransi kemungkinan besar akan mengganti nilai kendaraan dibawah harga beli karena karena depresiasi dan kecelakaan tersebut, sehingga klaim yang dibayarkan tidak cukup untuk mengcover nilai kendaraan customer, sehingga disarankan untuk mempunyai asuransi kendaraan, seperti contoh nya adalah “asuransi penggantian mobil baru”.
+
+![Shap Values](https://github.com/fauzanheryka/Data_Connector/assets/141822563/e2aba29a-2a7b-40f0-bbb2-4a67d6a59146)
+
+- ## Business Insight
+     - Bisa dilihat pada fitur previously insured sangat tidak membantu dalam pemodelan, karena sudah pasti jika customer sudah memiliki asuransi maka tidak akan berlanggan asuransi lagi kecuali perusahaan bisa mengadakan event,promo menarik yang bisa menggaet customer yang sudah memiliki asuransi pada perusahaan lain .
+     - Pada fitur vehicle damage, jika customer pernah mengalami kerusakan pada kendaraan maka customer memiliki kemungkinan yang tinggi untuk melakukan pembelian asuransi, dikarenan biaya yang mahal pada saat melakukan perbaikan apabila tidak dicover oleh asuransi.
+     - Fitur vehicle age juga memiliki kontribusi untuk customer membeli asuransi, karena ketika kendaaran baru customer cenderung melakukan perawatan maksimal dengan salah satu cara yaitu membeli asuransi agar lebih aman.
+ 
+- ## Business Recommendation
+Jika ingin menarik customer yang sudah memiliki asuransi maka sangat disarankan untuk melakukan pendekatan customer secara detail, dengan cara melakukan penyebaran kuisioner atau mengadakan event yang menarik supaya customer bisa beralih yang sebelumnya dari perusahaan competitor menjadi memiliki minat untuk membeli asuransi di perusahaan. Selain itu perusahaan juga dapat memberikan diskon untuk calon customer yang sudah memiliki asuransi sebelumnya dengan skema sebagai berikut:
+
+- Safety Driver Discount - Memberikan diskon 25% untuk customer yang tidak memiliki catatan kecelakaan kendaraan sebelumnya.
+- Young Driver Discount - Memberikan diskon 20% untuk customer yang berusia dibawah 25 tahun
+- Mature Driver Discount - Memberikan diskon 15% untuk customer yang berusia diatas 50 tahun
+  
+Melakukan campaign yang berfokus pada customer yang sudah pernah mengalami kerusakan pada kendaraan. Selain itu perusahaan juga dapat menawarkan layanan add-on gratis khusus kepada customer yang sudah pernah mengalami kerusakaan pada kendaraan dengan opsi layanan sebagai berikut:
+
+- Zero-Depreciation - Biasanya dalam kasus klaim asuransi kendaraan, perusahaan asuransi membayar penggantian suku cadang setelah dikurangi penyusutan, namun dalam hal ini untuk menarik customer, perusahaan dapat menawarkan pembayaran full untuk suku cadang nya dengan tidak dikurangi biaya penyusutan.
+- Engine Protection - Layanan Add-on ini akan mengcover biaya penggantian khusus apabila terjadi kerusakan pada mesin kendaraan. Perusahaan akan menanggung biaya perbaikan mesin seperti jika ada kerusakan mesin akibat cuaca buruk, seperti banjir yang mengakibatkan masuknya air pada mesin kendaraan yang menyebabkan kendaraan rusak.
+- 24x7 Roadside Assistance - Kerusakan kendaraan paling sering terjadi saat di jalanan. Customer mungkin terjebak saat hujan terus-menerus karena kendaraan tidak dapat dihidupkan atau ketika ban customer pecah saat sedang berkendara di jalan. Untuk mendapatkanmenarik customer dan membantu customer mendapatkan bantuan dalam keadaan seperti ini, perusahaan dapat memberikan layanan Add-on bantuan pinggir jalan (Roadside Assistance) kapan pun dan dimanapun (24x7). Dengan layanan ini customer bisa mendapatkan bantuan antara lain memperbaiki roda atau derek mobil. Dengan layanan ini perusahaan akan mencegah customer terdampar tanpa bantuan apa pun selama beberapa jam. Paket-paket yang dapat ditawarkan oleh perusahaan lewat Add-on ini seperti Derek Mobil, Menyalakan Baterai, Perbaikan Ban Kempes. Layanan ini akan sangat berguna bagi individu/calon customer yang sering melakukan perjalanan jarak jauh melalui jalan darat, karena dapat membantu jika terjadi kerusakan mekanis, ban bocor, atau keadaan darurat lainnya.
+
+Mengadakan campaign pada saat customer membeli kendaraan baru, karena pada saat customer membeli kendaraan baru, pasti akan sangat memperhatikan kendaraanya. maka dari itu perusahaan harus menyusun strategi campaign yang tepat. Selain itu perusahaan juga disarankan untuk bekerja sama dengan dealer/showroom kendaraan seperti berikut:
+
+- Melakukan bundling asuransi kendaraan dengan customer yang membeli kendaraan, terutama pada usia kendaraan yang baru atau berusia 1-2 tahun untuk memaksimalkan konversi asuransi dari penjualan kendaraan yang berasal dari dealer/showroom.
+
+- ## Best Model
+![Best Model](https://github.com/fauzanheryka/Data_Connector/assets/141822563/b0a27b07-201b-4008-aeef-3499c2fa7f31)
+
+## Conclusion
+- Mulai dari dataset ,awalnya kami memeriksa nilai null dan duplikat. Tidak ada nilai nol dan duplikat sehingga tidak perlu handle missing value/duplicate terhadap hal tersebut tidak diperlukan.pada saat data preprocessing , kami menerapkan teknik standarize fitur untuk menormalkan data agar mempermudah pemrosesan dengan algoritma ML. pada dataset ini karena ingin meningkatkan conversion rate maka kita memfokuskan recall score yang berfokus pada true positive sebanyak - banyaknya.
+- Melalui EDA, kami mengkategorikan Usia, kami mengamati bahwa pelanggan yang termasuk dalam kelompok youngAge lebih tertarik pada respons kendaraan. Kami mengamati bahwa pelanggan yang memiliki kendaraan berusia kurang dari 2 tahun cenderung lebih tertarik pada asuransi kendaraan. Demikian pula, pelanggan yang memiliki kendaraan rusak cenderung lebih tertarik pada asuransi kendaraan.
+- Untuk Seleksi Fitur, kami menggunakan heatmap dan uji multikolonieritas untuk fitur numerik dan untuk fitur kategorikal, kami menerapkan encoding. Di sini kami mengamati berdasarkan dua hal tersebut lalu mengambil fitur yang memiliki korelasi dan lolos uji VIF
+- Selanjutnya, kami menerapkan Algoritma machine learning untuk menentukan apakah pelanggan tertarik dengan Asuransi Kendaraan. Untuk algoritma kita memakai :Logistic Regression, XGBoost, Decision Tree, Random Forest, Naive Bayes, dan KNN
+- Setelah mengetahui hasil dari beberapa logaritma ML kita melihat bahwa pada score logistic regression mendapatkan skor recall sebesar 97% setelah melakukan hyperparameter, mengalami peningkatan meskipun tidak terlalu signifikan. Begitu pula untuk Naive bayes Classifier yang memiliki recall score 97%. maka kita dapat mengambil kesimpulan bahwa dua model tersebut merupakan best fit untuk pemodelan kali ini.
+- Untuk Business Recommendation kami memfokuskan pada 3 feature yaitu Previously_Insured, Previously_Damaged dan Vehicle_Age sebagai berikut
+- Previously_Insured - Perusahaan disarankan untuk melakukan pendekatan customer secara detail, dengan cara melakukan penyebaran kuisioner atau mengadakan event yang menarik untuk customer dan perusahaan juga disarankan untuk memberikan diskon untuk customer seperti diskon untuk "Safety Driver", "Young Driver" dan "Mature Driver".
+- Previously_Damaged - Perusahaan disarankan melakukan campaign yang berfokus pada customer yang sudah pernah mengalami kerusakan pada kendaraan dan perusahaan juga disarankan untuk dapat menawarkan layanan add-on gratis khusus kepada customer yang sudah pernah mengalami kerusakaan pada kendaraan dengan opsi layanan add on seperti "Zero-Depreciation", "Engine Protection", dan "24x7 Roadside Assistance".
+- Vehicle_Age - Perusahaan disarankan untuk mengadakan campaign pada saat customer membeli kendaraan baru, dan bekerja sama dengan dealer/showroom kendaraan dengan cara melakukan bundling asuransi kendaraan dengan customer yang membeli kendaraan, terutama pada usia kendaraan yang baru atau berusia 1-2 tahun untuk memaksimalkan konversi asuransi dari penjualan kendaraan yang berasal dari dealer/showroom.
 ---
 
 # Reference
 1. Kaiser Family Foundation - https://www.kff.org/
 2. Pew Research Center - https://www.pewresearch.org/
 3. U.S. Census Bureau - https://www.census.gov/
+4. Paper - https://github.com/minsu0816/ADS505-HealthCareCrossSelling/blob/main/ADS-505-Team6-JupyterNotebook-WrittenReport.pdf
+5. Journal - https://www.academia.edu/80341307/Comparative_Analysis_of_Building_Insurance_Prediction_Using_Some_Machine_Learning_Algorithms
+
+
+[def]: #machine-learning-evaluation-&-supervised-learning
+[(#machine-learning-evaluation-&-supervised-learning)]: #machine-learning-evaluation-&-supervised-learning
