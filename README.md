@@ -29,8 +29,10 @@ Memprediksi apakah pelanggan akan tertarik untuk membeli Asuransi Kendaraan sehi
     - 2 [Business Insight](#business-insight)
     - 3 [Data Pre-Processing](#data-pre-processing)
     - 4 [Feature Engineering](#feature-engineering)
-    - 5 [Feature selection](#feature-selection)
-    - 6 [Machine Learning Evaluation & Supervised Learning](#machine-learning-evaluation-&-supervised-learning)
+    - 5 [Feature Selection](#feature-selection)
+    - 6 [Machine Learning Evaluation & Supervised Learning](#machine-learning-evaluation--supervised-learning)
+    - 7 [Business Recommendation](#business-recommendation)
+    
   * [Conclusion](#conclusion)
   * [Reference](#reference)
 
@@ -289,3 +291,7 @@ Mengadakan campaign pada saat customer membeli kendaraan baru, karena pada saat 
 3. U.S. Census Bureau - https://www.census.gov/
 4. Paper - https://github.com/minsu0816/ADS505-HealthCareCrossSelling/blob/main/ADS-505-Team6-JupyterNotebook-WrittenReport.pdf
 5. Journal - https://www.academia.edu/80341307/Comparative_Analysis_of_Building_Insurance_Prediction_Using_Some_Machine_Learning_Algorithms
+
+
+[def]: #machine-learning-evaluation-&-supervised-learning
+[(#machine-learning-evaluation-&-supervised-learning)]: #machine-learning-evaluation-&-supervised-learning
