@@ -192,6 +192,33 @@ Dapat dilihat dari grafik bahwa customer yang memiliki atau tertarik dengan asur
     8. Feature "Payment_Method"
         Feature "Payment_Method" atau Metode Pembayaran saat customer membeli kendaraan dapat dijadikan feature tambahan karena feature ini akan berguna untuk melihat seberapa besar pengaruh cara bayar customer saat membeli kendaraan terhadap keputusan customer apakah akan menggunakan Asuransi Kendaraan atau tidak. Hal ini disebabkan ketika customer memiliki kendaraan yang belum lunas pembayarannya, mereka cenderung untuk menjaga kendaraan nya agar tidak mengalami kerusakan, yang disebabkan karena ketika kendaraan rusak, maka akan ada biaya tambahan lagi yang dikeluarkan. Akan menjadi lebih menarik lagi jika kita dapat melihat bagaimana kecenderungan customer yang masih memiliki cicilan kendaraan terhadap ketertarikan mereka untuk membayar asuransi kendaraan tiap bulan.
 
+## Machine Learning Evaluation & Supervised Learning
+
+- ## Referensi Modeling Machine Learning dan Hyperparameter Tuning
+  Untuk mempermudah pemilihan model machine learning dan hyperparameter tuning yang akan digunakan pada project ini, kami melakukan riset dan pada akhir nya mengacu pada dua penelitian sebagai berikut untuk penentuan model dan hyperparameter tuning yang akan dilakukan:
+     - Paper "A Classification Problem: Health Insurance Cross Sell Prediction" - University of San Diego
+     - Journal "Comparative Analysis of Building Insurance Prediction Using Some Machine Learning Algorithms" - University of Electronic Science and Technology of China
+
+- ##  Modeling Machine Learning
+  Berdasarkan referensi diatas dan pembelajaran yang telah kami lakukan pada bootcamp, kami akan mencoba berbagai model pembelajaran ML pada kumpulan data untuk melihat kinerja masing-masing model:
+     - Logistic Regression
+     - XGBoost
+     - Decision Tree
+     - Random Forest
+     - Naive Bayes
+     - KNN
+     - Precision : Precision adalah rasio prediksi True Positive terhadap jumlah total prediksi Positive.
+     - Recall : Recall adalah rasio prediksi True positif terhadap jumlah total kasus positif sebenarnya
+     - F1-Score : menghitung keseimbangan mean dari precision dan recall
+     - Confusion Matrix : Matriks konfusi menunjukkan jumlah prediksi True Positive, False positive, True Negative, dan False Negative yang dibuat oleh model.
+     - ROC Curve: Kurva karakteristik pengoperasian penerima, atau kurva ROC, adalah plot grafis yang menggambarkan kemampuan diagnostik sistem pengklasifikasi binary karena ambang diskriminasinya bervariasi. Kurva ROC dibuat dengan memplot True Positive Rate (TPR) terhadap False Positive Rate (FPR) pada berbagai pengaturan threshold. true positive Rate (TPR) juga dikenal sebagai sensitivitas, perolehan, atau probabilitas deteksi dalam pembelajaran mesin. False positive Rate juga dikenal sebagai probabilitas alarm palsu dan dapat dihitung sebagai (1 − spesifisitas).
+     - Classification report : Visualisasi laporan klasifikasi menampilkan score precision, recall, F1, dan dukungan untuk model. Untuk mendukung interpretasi dan deteksi masalah yang lebih mudah, laporan ini mengintegrasikan skor numerik dengan heatmap.
+     - Untuk dataset ini kita memfokuskan metric evaluasi recall score, karena ingin meningkatkan conversion rate sebanyak mungkin untuk mendapatkan potensial user
+
+![Eval Classification Models](https://github.com/fauzanheryka/Data_Connector/assets/141822563/cbcc0200-e6dc-4c51-8c2f-c8c396fc43eb)
+
+Dari modeling diatas kita bisa mengetahui bahwa model Logistic Regression dan naive bayes memiliki score recall yang baguss sesuai dengan tujuan bisnis yang sudah ditentukan yaitu mencari true positive sebanyak - banyaknya. maka pilihan model logistic regression dan naive bayes adalah opsi terbaik dengan score yang hampir mirip yaitu 97% dengan score auc roc yang stabil juga, sehingga memiliki kecenderungan overfit/underfit yang sangat kecil sekali. meskipun begitu kita akan mencoba mengoptimasi kedua model tersebut menggunakan hyperparameter tuning.
+
 ---
 
 # Reference
