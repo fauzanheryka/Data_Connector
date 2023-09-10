@@ -30,6 +30,7 @@ Memprediksi apakah pelanggan akan tertarik untuk membeli Asuransi Kendaraan sehi
     - 3 [Data Pre-Processing](#data-pre-processing)
     - 4 [Feature Engineering](#feature-engineering)
     - 5 [Feature selection](#feature-selection)
+    - 6 [Machine Learning Evaluation & Supervised Learning](#machine-learning-evaluation-&-supervised-learning)
   * [Conclusion](#conclusion)
   * [Reference](#reference)
 
