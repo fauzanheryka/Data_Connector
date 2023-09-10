@@ -10,7 +10,6 @@ Anggota Kelompok:
 5. Lulu Munira Hanifah
 6. Aulia Kindy
 7. Rojiat Liqoarobby
-8. Qarry Atul Chairunissa
 
 # Health Insurance Cross Sell Prediction
 Memprediksi apakah pelanggan akan tertarik untuk membeli Asuransi Kendaraan sehingga perusahaan dapat merencanakan strategi komunikasinya untuk menjangkau pelanggan tersebut dan mengoptimalkan **Business model** dan **Revenue**.
@@ -31,8 +30,8 @@ Memprediksi apakah pelanggan akan tertarik untuk membeli Asuransi Kendaraan sehi
     - 3 [Data Pre-Processing](#data-pre-processing)
     - 4 [Feature Engineering](#feature-engineering)
     - 5 [Feature selection](#feature-selection)
+  * [Conclusion](#conclusion)
   * [Reference](#reference)
-    
 
 # Abstract
 Polis asuransi adalah surat perjanjian atau kontrak sebagai bukti pengalihan risiko dari tertanggung (peserta) kepada penanggung (pihak penyedia layanan asuransi). Perusahaan menyanggupi untuk memberikan jaminan kompensasi atas kerugian, kerusakan, penyakit, atau kematian tertentu sebagai imbalan atas pembayaran premi tertentu. Ada beberapa faktor yang memainkan peran utama dalam menjaring pelanggan untuk setiap polis asuransi. Di sini kami memiliki data tentang demografi seperti usia, jenis kelamin, kode wilayah, dan kerusakan kendaraan, usia kendaraan, premi tahunan, saluran sumber polis.
@@ -239,16 +238,17 @@ Dari modeling diatas kita bisa mengetahui bahwa model Logistic Regression dan na
 ![Feature Importance](https://github.com/fauzanheryka/Data_Connector/assets/141822563/10adbb3b-f52d-46b1-b968-3dda42eea1e2)
 
   Pada dataset ini memiliki beberapa fitur yang penting, sesuai dari grafik diatas ada 2 fitur yang dominan yaitu vehicle damage dan vehicle age.Fitur vehicle damage memiliki importance score yang tinggi, maka fitur tersebut memiliki hubungan yang kuat pada conversion rate hal ini didukung dengan artikel dari analyticsvidhya.com dalam artikelnya yang berjudul “Cross-Sell Prediction Using Machine Learning in Python” yang menyatakan bahwa:
-     - Customer yang kendaraan nya pernah rusak cenderung lebih memiliki pengalaman dan pengetahuan dari segi cost yang harus dikeluarkan untuk memperbaiki kendaraan nya. Dari segi pengalaman customer, apabila menggunakan asuransi, cost yang dikeluarkan jauh lebih murah daripada saat tidak menggunakan asuransi, karena saat menggunakan asuransi kendaraan, customer dapat mendapatkan klaim dari asuransi disaat kendaraan mereka rusak, sedangkan apabila tidak menggunakan asuransi, customer akan menanggung biaya perbaikan nya sendiri (yang jauh lebih mahal).
-  Untuk vehicle age juga memiliki score tertinggi kedua yang bearti usia kendaraan juga memiliki kemungkinan tinggi untuk customer membeli asuransi kendaraan.Dari EDA yang sudah ditampilkan usia kendaraan kurang dari 2 tahun akan membeli asuransi kendaraan, karena untuk beberapa customer dengan memiliki mobil baru mereka akan merawat kendaraan yang baru dimiliki. Hal ini juga didukung oleh forbes.com dalam artikelnya yang berjudul “advisor/car-insurance/new-car-replacement” yang menyatakan bahwa kendaraan baru lebih banyak memiliki asuransi, karena hal sebagai berikut:
-     - Penurunan nilai/Depresiasi nilai kendaraan dapat merugikan customer disaat customer mengalami kecelakaan tak lama setelah customer membeli mobil baru. Perusahaan asuransi kemungkinan besar akan mengganti nilai kendaraan dibawah harga beli karena karena depresiasi dan kecelakaan tersebut, sehingga klaim yang dibayarkan tidak cukup untuk mengcover nilai kendaraan customer, sehingga disarankan untuk mempunyai asuransi kendaraan, seperti contoh nya adalah “asuransi penggantian mobil baru”.
+- Customer yang kendaraan nya pernah rusak cenderung lebih memiliki pengalaman dan pengetahuan dari segi cost yang harus dikeluarkan untuk memperbaiki kendaraan nya. Dari segi pengalaman customer, apabila menggunakan asuransi, cost yang dikeluarkan jauh lebih murah daripada saat tidak menggunakan asuransi, karena saat menggunakan asuransi kendaraan, customer dapat mendapatkan klaim dari asuransi disaat kendaraan mereka rusak, sedangkan apabila tidak menggunakan asuransi, customer akan menanggung biaya perbaikan nya sendiri (yang jauh lebih mahal).
+ 
+Untuk vehicle age juga memiliki score tertinggi kedua yang bearti usia kendaraan juga memiliki kemungkinan tinggi untuk customer membeli asuransi kendaraan.Dari EDA yang sudah ditampilkan usia kendaraan kurang dari 2 tahun akan membeli asuransi kendaraan, karena untuk beberapa customer dengan memiliki mobil baru mereka akan merawat kendaraan yang baru dimiliki. Hal ini juga didukung oleh forbes.com dalam artikelnya yang berjudul “advisor/car-insurance/new-car-replacement” yang menyatakan bahwa kendaraan baru lebih banyak memiliki asuransi, karena hal sebagai berikut:
+- Penurunan nilai/Depresiasi nilai kendaraan dapat merugikan customer disaat customer mengalami kecelakaan tak lama setelah customer membeli mobil baru. Perusahaan asuransi kemungkinan besar akan mengganti nilai kendaraan dibawah harga beli karena karena depresiasi dan kecelakaan tersebut, sehingga klaim yang dibayarkan tidak cukup untuk mengcover nilai kendaraan customer, sehingga disarankan untuk mempunyai asuransi kendaraan, seperti contoh nya adalah “asuransi penggantian mobil baru”.
 
 ![Shap Values](https://github.com/fauzanheryka/Data_Connector/assets/141822563/e2aba29a-2a7b-40f0-bbb2-4a67d6a59146)
 
 - ## Business Insight
      - Bisa dilihat pada fitur previously insured sangat tidak membantu dalam pemodelan, karena sudah pasti jika customer sudah memiliki asuransi maka tidak akan berlanggan asuransi lagi kecuali perusahaan bisa mengadakan event,promo menarik yang bisa menggaet customer yang sudah memiliki asuransi pada perusahaan lain .
-     Pada fitur vehicle damage, jika customer pernah mengalami kerusakan pada kendaraan maka customer memiliki kemungkinan yang tinggi untuk melakukan pembelian asuransi, dikarenan biaya yang mahal pada saat melakukan perbaikan apabila tidak dicover oleh asuransi.
-     Fitur vehicle age juga memiliki kontribusi untuk customer membeli asuransi, karena ketika kendaaran baru customer cenderung melakukan perawatan maksimal dengan salah satu cara yaitu membeli asuransi agar lebih aman.
+     - Pada fitur vehicle damage, jika customer pernah mengalami kerusakan pada kendaraan maka customer memiliki kemungkinan yang tinggi untuk melakukan pembelian asuransi, dikarenan biaya yang mahal pada saat melakukan perbaikan apabila tidak dicover oleh asuransi.
+     - Fitur vehicle age juga memiliki kontribusi untuk customer membeli asuransi, karena ketika kendaaran baru customer cenderung melakukan perawatan maksimal dengan salah satu cara yaitu membeli asuransi agar lebih aman.
  
 - ## Business Recommendation
 Jika ingin menarik customer yang sudah memiliki asuransi maka sangat disarankan untuk melakukan pendekatan customer secara detail, dengan cara melakukan penyebaran kuisioner atau mengadakan event yang menarik supaya customer bisa beralih yang sebelumnya dari perusahaan competitor menjadi memiliki minat untuk membeli asuransi di perusahaan. Selain itu perusahaan juga dapat memberikan diskon untuk calon customer yang sudah memiliki asuransi sebelumnya dengan skema sebagai berikut:
@@ -286,5 +286,5 @@ Mengadakan campaign pada saat customer membeli kendaraan baru, karena pada saat 
 1. Kaiser Family Foundation - https://www.kff.org/
 2. Pew Research Center - https://www.pewresearch.org/
 3. U.S. Census Bureau - https://www.census.gov/
-4. https://github.com/minsu0816/ADS505-HealthCareCrossSelling/blob/main/ADS-505-Team6-JupyterNotebook-WrittenReport.pdf
-5. https://www.academia.edu/80341307/Comparative_Analysis_of_Building_Insurance_Prediction_Using_Some_Machine_Learning_Algorithms
+4. Paper - https://github.com/minsu0816/ADS505-HealthCareCrossSelling/blob/main/ADS-505-Team6-JupyterNotebook-WrittenReport.pdf
+5. Journal - https://www.academia.edu/80341307/Comparative_Analysis_of_Building_Insurance_Prediction_Using_Some_Machine_Learning_Algorithms
