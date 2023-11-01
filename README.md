@@ -231,12 +231,9 @@ Dari modeling diatas kita bisa mengetahui bahwa model Logistic Regression dan na
      - Dan setelah tuning pada data test memiliki kenaikan true postive yang bisa menjadi peningkatan conversion rate sesuai dengan tujuan bisnis
 <br>
 
-- ## Analisis menggunakan lift curve dan gain curve
-  - Cumulative Gain Curve
+- ## Analisis menggunakan cumulative curve dan lift curve
+  - Cumulative Gain Curve & lift curve
   ![cumulative curve](https://github.com/fauzanheryka/Data_Connector/assets/141212116/75821367-8e27-401d-93ba-befe0a074b38)
-<br>
-
-- Cumulative Gain Curve
   ![gain curve](https://github.com/fauzanheryka/Data_Connector/assets/141212116/9f9bb2c5-227c-464e-8b0d-fe5f762ab88c)
   - - Bisa dilihat pada cumulative gain curve mengalami peningkatan yang signifikan setelah melakukan prediksi dengan sampel 30% data model dapat mengcapture 80% customer yang interest, dan Model logistic regression juga berhasil melampaui baseline yang bearti logistic regression bisa melakukan prediksi dengan baik daripada menggunakan prediksi acak secara manual **(Baseline)**
   - - pada lift curve jika kita memakai 30% sample maka performa machine learning akan meningkat 2.4X lebih baik daripada melakukan prediksi random/manual
