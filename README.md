@@ -110,12 +110,12 @@ setelah kita melakukan analisis univariate kita lanjut ke tahap ke berikutnya ya
 dalam EDA kita hanya berfokus untuk mengenali data, persebaran data dan menemukan outlier serta mencari insight, setelah kita melakukan EDA kita akan melakukan bisnis insight untuk perusahaan agar bisa mencapai bisnis metrics yang sudah ditetapkan. 
 Berikut beberapa bisnis insight yang sudah ditemukan : 
 - Age grup
-![age grup](https://github.com/fauzanheryka/Data_Connector/assets/141212116/fb511bc5-52f5-46b9-818a-2a620a8267fd)
+![age grup](https://github.com/fauzanheryka/Data_Connector/assets/141212116/1e93e7f8-5cbb-45d9-afa8-1b1100b2c2fb)
 distribusi kelompok umur muda lebih banyak membeli asuransi kesehatan atau kendaraan, dikarenakan pada umur yang lebih muda kemungkinan besar mereka cenderung lebih sadar akan pentingnya perlindungan finansial melalui asuransi. Hal ini juga didukung oleh protective.com dalam artikelnya yang berjudul “why you should buy life insurance when you are young” yang mengatakan bahwa kelompok umur muda lebih banyak membeli asuransi karena dua faktor sebagai berikut:
     * Cheaper & Healthier
     Secara umum, semakin muda umur kita maka akan semakin sedikit kita akan membayar premi, karena kelompok umur muda memiliki risiko yang lebih kecil daripada seseorang yang jauh lebih tua secara kondisi kesehatan
 - Vehicle age 
-![vehicle age grup](https://github.com/fauzanheryka/Data_Connector/assets/141212116/068c75d8-3ba6-4f00-9344-a842aa5d6c85)
+![vehicle age grup](https://github.com/fauzanheryka/Data_Connector/assets/141212116/75551920-b1a6-4b0d-b634-6b0dad6f2368)
 Dapat dilihat dari grafik bahwa customer yang memiliki atau tertarik dengan asuransi merupakan customer yang mempunyai usia kendaraan yang kurang dari 2 tahun (1-2 Year dan < 1 Year), karena mereka akan cenderung lebih merawat kendaraan baru yang dimiliki. Hal ini juga didukung oleh forbes.com dalam artikelnya yang berjudul “advisor/car-insurance/new-car-replacement” yang menyatakan bahwa kendaraan baru lebih banyak memiliki asuransi, karena hal sebagai berikut:
     * Penurunan nilai/Depresiasi nilai kendaraan dapat merugikan customer disaat customer mengalami kecelakaan tak lama setelah customer membeli mobil baru. Perusahaan asuransi kemungkinan besar akan mengganti nilai kendaraan dibawah harga beli karena karena depresiasi dan kecelakaan tersebut, sehingga klaim yang dibayarkan tidak cukup untuk mengcover nilai kendaraan customer, sehingga disarankan untuk mempunyai asuransi kendaraan, seperti contoh nya adalah “asuransi penggantian mobil baru”.
 
@@ -229,6 +229,14 @@ Dari modeling diatas kita bisa mengetahui bahwa model Logistic Regression dan na
      - Setelah melakukan tuning kita berhasil menaikan recall score dari 97% meskipun tidak terlalu signifikan menggunakan randomized search karena pada saat menggunakan metode tersebut memiliki compute time yang relatif cepat
      -Setelah melakukan tuning kita berhasil mengurangi false negative yang lumayan, sehingga hal ini bisa membuat model untuk memprediksi customer yang memang benar - benar tidak berminat untuk membeli asuransi lebih akurat dan dapat mencegah cost loss perusahaan.
      - Dan setelah tuning pada data test memiliki kenaikan true postive yang bisa menjadi peningkatan conversion rate sesuai dengan tujuan bisnis
+<br>
+
+- ## Analisis menggunakan lift curve dan gain curve
+  - Cumulative Gain Curve
+  ![cumulative curve](https://github.com/fauzanheryka/Data_Connector/assets/141212116/75821367-8e27-401d-93ba-befe0a074b38)
+  ![gain curve](https://github.com/fauzanheryka/Data_Connector/assets/141212116/9f9bb2c5-227c-464e-8b0d-fe5f762ab88c)
+  - - Bisa dilihat pada cumulative gain curve mengalami peningkatan yang signifikan setelah melakukan prediksi dengan sampel 30% data model dapat mengcapture 80% customer yang interest, dan Model logistic regression juga berhasil melampaui baseline yang bearti logistic regression bisa melakukan prediksi dengan baik daripada menggunakan prediksi acak secara manual **(Baseline)**
+  - - pada lift curve jika kita memakai 30% sample maka performa machine learning akan meningkat 2.4X lebih baik daripada melakukan prediksi random/manual
 
 - ##  Hyperparameter Tuning GNB
 
